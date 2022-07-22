@@ -1,0 +1,23 @@
+body{
+    background-color: chartreuse;
+}
+p{
+    background-color: pink;
+    border-radius:dashed;
+    border-top:50px;
+}
+table {
+    border-color:red;
+    padding:20px;
+    margin:10px;
+}
+td {
+    border-color:blue;
+}
+li {
+    color:red;
+}
+div{
+    background-color:dotted;
+}
+ 
