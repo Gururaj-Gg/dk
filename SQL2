@@ -1,0 +1,140 @@
+CREATE TABLE STUDENT
+(USN VARCHAR(20) PRIMARY KEY,
+NAME CHAR(20),
+DOB DATE,
+BRANCH CHAR(20),
+MARK1 FLOAT(5,2),
+MARK2 FLOAT(5,2),
+MARK3 FLOAT(5,2),
+TOTAL FLOAT(5,2),
+GPA FLOAT(5,2) );
+
+INSERT INTO STUDENT (USN,NAME,DOB,BRANCH,MARK1,MARK2,MARK3)
+VALUES('4VP21MC008','DEEKSHITH','2000-05-21','MCA',96.00,86.00,76.00);
+INSERT INTO STUDENT (USN,NAME,DOB,BRANCH,MARK1,MARK2,MARK3)
+VALUES('4VP21MC005','GUEU','2000-05-21','MBA',67.00,76.00,96.00);
+INSERT INTO STUDENT (USN,NAME,DOB,BRANCH,MARK1,MARK2,MARK3)
+VALUES('4VP21MC005','PRAVEEN','2000-06-12','CS',67.00,76.00,96.00);
+INSERT INTO STUDENT (USN,NAME,DOB,BRANCH,MARK1,MARK2,MARK3)
+VALUES('4VP21MC012','SUJITH','2000-02-18','CS',55.00,66.00,44.00);
+INSERT INTO STUDENT (USN,NAME,DOB,BRANCH,MARK1,MARK2,MARK3)
+VALUES('1001','AMAR','2000-02-18','MCA',58.00,67.00,44.00);
+INSERT INTO STUDENT (USN,NAME,DOB,BRANCH,MARK1,MARK2,MARK3)
+VALUES('1002','ADVITH','2000-02-15','CIVIL',58.00,27.00,44.00);
+
+
+mysql> SELECT * FROM STUDENT;
++------------+-----------+------------+--------+-------+-------+-------+-------+------+
+| USN        | NAME      | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL | GPA  |
++------------+-----------+------------+--------+-------+-------+-------+-------+------+
+| 1001       | AMAR      | 2000-02-18 | MCA    | 58.00 | 67.00 | 44.00 |  NULL | NULL |
+| 1002       | ADVITH    | 2000-02-15 | CIVIL  | 58.00 | 27.00 | 44.00 |  NULL | NULL |
+| 4VP21MC005 | GUEU      | 2000-05-21 | MBA    | 67.00 | 76.00 | 96.00 |  NULL | NULL |
+| 4VP21MC006 | PRAVEEN   | 2000-06-12 | CS     | 67.00 | 86.00 | 96.00 |  NULL | NULL |
+| 4VP21MC008 | DEEKSHITH | 2000-05-21 | MCA    | 96.00 | 86.00 | 76.00 |  NULL | NULL |
+| 4VP21MC012 | SUJITH    | 2000-02-18 | CS     | 55.00 | 66.00 | 44.00 |  NULL | NULL |
++------------+-----------+------------+--------+-------+-------+-------+-------+------+
+6 rows in set (0.00 sec)
+
+1)mysql> UPDATE STUDENT SET TOTAL=MARK1+MARK2+MARK3;
+Query OK, 6 rows affected (0.00 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> SELECT * FROM STUDENT;
++------------+-----------+------------+--------+-------+-------+-------+--------+------+
+| USN        | NAME      | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL  | GPA  |
++------------+-----------+------------+--------+-------+-------+-------+--------+------+
+| 1001       | AMAR      | 2000-02-18 | MCA    | 58.00 | 67.00 | 44.00 | 169.00 | NULL |
+| 1002       | ADVITH    | 2000-02-15 | CIVIL  | 58.00 | 27.00 | 44.00 | 129.00 | NULL |
+| 4VP21MC005 | GUEU      | 2000-05-21 | MBA    | 67.00 | 76.00 | 96.00 | 239.00 | NULL |
+| 4VP21MC006 | PRAVEEN   | 2000-06-12 | CS     | 67.00 | 86.00 | 96.00 | 249.00 | NULL |
+| 4VP21MC008 | DEEKSHITH | 2000-05-21 | MCA    | 96.00 | 86.00 | 76.00 | 258.00 | NULL |
+| 4VP21MC012 | SUJITH    | 2000-02-18 | CS     | 55.00 | 66.00 | 44.00 | 165.00 | NULL |
++------------+-----------+------------+--------+-------+-------+-------+--------+------+
+6 rows in set (0.00 sec)
+
+2)mysql> UPDATE STUDENT SET  GPA=(TOTAL/3);
+Query OK, 6 rows affected (0.01 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> SELECT * FROM STUDENT;
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+| USN        | NAME      | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL  | GPA   |
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+| 1001       | AMAR      | 2000-02-18 | MCA    | 58.00 | 67.00 | 44.00 | 169.00 | 56.33 |
+| 1002       | ADVITH    | 2000-02-15 | CIVIL  | 58.00 | 27.00 | 44.00 | 129.00 | 43.00 |
+| 4VP21MC005 | GUEU      | 2000-05-21 | MBA    | 67.00 | 76.00 | 96.00 | 239.00 | 79.67 |
+| 4VP21MC006 | PRAVEEN   | 2000-06-12 | CS     | 67.00 | 86.00 | 96.00 | 249.00 | 83.00 |
+| 4VP21MC008 | DEEKSHITH | 2000-05-21 | MCA    | 96.00 | 86.00 | 76.00 | 258.00 | 86.00 |
+| 4VP21MC012 | SUJITH    | 2000-02-18 | CS     | 55.00 | 66.00 | 44.00 | 165.00 | 55.00 |
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+6 rows in set (0.00 sec)
+
+
+3)mysql> SELECT  USN, NAME FROM STUDENT WHERE DOB BETWEEN '2000-01-01' AND '2012-12-12';
++------------+-----------+
+| USN        | NAME      |
++------------+-----------+
+| 1001       | AMAR      |
+| 1002       | ADVITH    |
+| 4VP21MC005 | GUEU      |
+| 4VP21MC006 | PRAVEEN   |
+| 4VP21MC008 | DEEKSHITH |
+| 4VP21MC012 | SUJITH    |
++------------+-----------+
+6 rows in set (0.00 sec)
+
+4)mysql> SELECT * FROM STUDENT   WHERE BRANCH='MCA';
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+| USN        | NAME      | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL  | GPA   |
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+| 1001       | AMAR      | 2000-02-18 | MCA    | 58.00 | 67.00 | 44.00 | 169.00 | 56.33 |
+| 4VP21MC008 | DEEKSHITH | 2000-05-21 | MCA    | 96.00 | 86.00 | 76.00 | 258.00 | 86.00 |
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+2 rows in set (0.00 sec)
+
+5)mysql> SELECT BRANCH, MAX(GPA) FROM STUDENT GROUP BY BRANCH;
++--------+----------+
+| BRANCH | MAX(GPA) |
++--------+----------+
+| MCA    |    86.00 |
+| CIVIL  |    43.00 |
+| MBA    |    79.67 |
+| CS     |    83.00 |
++--------+----------+
+4 rows in set (0.00 sec)
+
+
+6)mysql> SELECT * FROM  STUDENT WHERE NAME  LIKE 'S%';
++------------+--------+------------+--------+-------+-------+-------+--------+-------+
+| USN        | NAME   | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL  | GPA   |
++------------+--------+------------+--------+-------+-------+-------+--------+-------+
+| 4VP21MC012 | SUJITH | 2000-02-18 | CS     | 55.00 | 66.00 | 44.00 | 165.00 | 55.00 |
++------------+--------+------------+--------+-------+-------+-------+--------+-------+
+1 row in set (0.00 sec)
+
+7)mysql> SELECT * FROM  STUDENT WHERE NAME  LIKE '%AR';
++------+------+------------+--------+-------+-------+-------+--------+-------+
+| USN  | NAME | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL  | GPA   |
++------+------+------------+--------+-------+-------+-------+--------+-------+
+| 1001 | AMAR | 2000-02-18 | MCA    | 58.00 | 67.00 | 44.00 | 169.00 | 56.33 |
++------+------+------------+--------+-------+-------+-------+--------+-------+
+1 row in set (0.00 sec)
+
+
+
+8)mysql> DELETE FROM STUDENT WHERE USN='1001';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM STUDENT;
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+| USN        | NAME      | DOB        | BRANCH | MARK1 | MARK2 | MARK3 | TOTAL  | GPA   |
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+| 1002       | ADVITH    | 2000-02-15 | CIVIL  | 58.00 | 27.00 | 44.00 | 129.00 | 43.00 |
+| 4VP21MC005 | GUEU      | 2000-05-21 | MBA    | 67.00 | 76.00 | 96.00 | 239.00 | 79.67 |
+| 4VP21MC006 | PRAVEEN   | 2000-06-12 | CS     | 67.00 | 86.00 | 96.00 | 249.00 | 83.00 |
+| 4VP21MC008 | DEEKSHITH | 2000-05-21 | MCA    | 96.00 | 86.00 | 76.00 | 258.00 | 86.00 |
+| 4VP21MC012 | SUJITH    | 2000-02-18 | CS     | 55.00 | 66.00 | 44.00 | 165.00 | 55.00 |
++------------+-----------+------------+--------+-------+-------+-------+--------+-------+
+5 rows in set (0.00 sec)
+
